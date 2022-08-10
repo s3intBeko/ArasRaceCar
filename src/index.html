@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>My Application</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../src/speed/index.css">
+        <link href="../src/speed/css/speedometer.css" rel="stylesheet" type="text/css" />
+        
+    </head>
+    <body>
+        <b>Hello World</b>
+        <button class = "btn btn-success" id="settingsButton">Settings</button>
+        <div id="show"></div>
+        <input id="speedoMeterInputRange-1" type="range"  min="0" max="35" value="1" />
+        <span id="speedoMeterInputRange-value-1">10</span>
+        <div class="d-flex justify-content-center">
+            <div class="speedo">
+                <div>                  
+                  <div id="speedometer-1"></div>
+                </div>
+              </div>
+
+        </div>
+        <div class="batteryOver">
+            <div id="battery">
+                <div id="charge"></div>
+                <div id="charge-level"></div>
+              </div>
+              <div id="charging-time"></div>
+        </div>
+        
+        
+        <script src="../src/speed/js/speedometer.js"></script>
+        <script  src="render.js"></script>
+        
+    </body>
+</html>
+

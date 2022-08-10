@@ -1,0 +1,205 @@
+<!--
+  *index.html
+  *author: Manivannan R
+  *project: Speedometer
+-->
+<html>
+<head>
+<link href="css/speedometer.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <h1>Speedometer</h1>
+  <hr><br>
+  <table>
+  <tr>
+    <td>
+<pre>
+Default Config   
+------------------------           
+
+{}
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+    </td>
+    <td>
+<pre>
+Config - 1  
+--------------------               
+
+{
+  divFact:5, 
+  initVal:30, 
+
+  edgeRadius: 300, 
+  indicatorRadius: 280, 
+  indicatorNumbRadius:220,
+  
+  speedoNobeW: 250,
+  id: 'mani-1'
+}
+
+
+</pre>
+    </td>
+    <td>
+<pre>
+Config - 2  
+-------------------- 
+
+  {
+    divFact:20, 
+    maxVal: 240,
+
+    dangerColor: 'green',
+    bgColor: '#aaa',
+    
+    speedArrowColor: 'red',
+    nobNumbColor: 'yellow',
+
+    speedValBGColor: '#666',
+    speedValTxtColor: 'blue'
+  }
+</pre>
+    </td>
+    <td><textarea id="customConfigArea" rows="30" cols="50">
+      {
+        "maxVal": 26,
+        "divFact": 1,
+        "dangerLevel": 10,
+        "initDeg": -45,
+        "maxDeg": 240,
+        "edgeRadius": 150,
+        "speedNobeH": 7,
+        "speedoNobeW": 70,
+        "dangerColor": "red",
+        "bgColor": "black",
+        "speedArrowColor": "red",
+        "nobNumbColor": "white",    
+        "speedValBGColor": "white",
+        "speedValTxtColor": "blue",
+        "speedoNobeL": 50,
+        "indicatorRadius": 135,
+        "indicatorNumbRadius": 110,
+        "speedPositionTxtWH": 80,
+        "nobW": 20,
+        "nobH": 2,
+        "numbW": 21,
+        "numbH": 16,
+        "midNobW": 10,
+        "midNobH": 10,
+        "noOfSmallDiv": 2,
+        "eventListenerType": "change",
+        "multiplier": 1,
+        "gagueLabel": ""
+      }
+    
+    
+    </textarea></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><input type="button" value="Apply Default Config" id="defaultConfig" /></td>
+    <td><input type="button" value="Apply Config - 1" id="applyconfig1" /></td>
+    <td><input type="button" value="Apply Config - 2" id="applyconfig2" /></td>
+    <td><input type="button" value="Apply Config - 3" id="applyconfig3" /></td>
+  </tr>
+</table>
+
+<br><hr><br>  
+  <div>
+    Speed
+    <input id="speedoMeterInputRange-1" type="range"  min="0" max="35" value="1" />
+    <span id="speedoMeterInputRange-value-1">10</span>
+  </div>
+  <div style="border: 18px solid #dfdfdf;width: fit-content;border-radius: 192px;">
+    <div id="speedometer-1"></div>
+  </div>
+  <br>
+</body>
+<script src="js/speedometer.js"></script>
+<script type="text/javascript">
+  
+  var speedoMeter1 = new speedometer({
+    maxVal:35,
+    divFact:1,
+    dangerLevel:20,
+  });
+  document.getElementById('speedometer-1').append(speedoMeter1.elm);
+
+  var speedoMeterInputRange = document.getElementById('speedoMeterInputRange-1');
+  var speedoMeterInputRangeVal = document.getElementById('speedoMeterInputRange-value-1');
+
+  var applyconfig1 = document.getElementById('applyconfig1');
+  var applyconfig2 = document.getElementById('applyconfig2');
+  var applyconfig3 = document.getElementById('applyconfig3');
+  var defaultConfig = document.getElementById('defaultConfig');
+
+  speedoMeterInputRange.onchange = function(e){
+    speedoMeter1.setPosition(e.target.value);
+    speedoMeterInputRangeVal.innerText = e.target.value;
+  }
+  
+  defaultConfig.onclick = function(e){
+    speedoMeter1 = new speedometer({initVal:speedoMeterInputRange.value});
+    document.getElementById('speedometer-1').innerHTML = '';
+    document.getElementById('speedometer-1').append(speedoMeter1.elm);
+  }
+  applyconfig3.onclick = function(e){
+    let item = document.getElementById('customConfigArea')
+    console.log(item.value)
+    speedoMeter1 = new speedometer(JSON.parse(item.value));
+  document.getElementById('speedometer-1').innerHTML = '';
+  document.getElementById('speedometer-1').append(speedoMeter1.elm);
+  }
+  applyconfig1.onclick = function(e){
+    speedoMeter1 = new speedometer({
+    
+      divFact:5, 
+      initVal:speedoMeterInputRange.value, 
+
+      edgeRadius: 300, 
+      indicatorRadius: 280, 
+      indicatorNumbRadius:220,
+      
+      speedoNobeW: 250,
+      id: 'mani-1'
+
+    });
+    document.getElementById('speedometer-1').innerHTML = '';
+    document.getElementById('speedometer-1').append(speedoMeter1.elm);
+  }
+
+  applyconfig2.onclick = function(e){
+    speedoMeter1 = new speedometer({
+      divFact:20, 
+      maxVal: 240,
+
+      initVal:speedoMeterInputRange.value,
+
+      dangerColor: 'green',
+      bgColor: '#aaa',
+      
+      speedArrowColor: 'red',
+      nobNumbColor: 'yellow',
+
+      speedValBGColor: '#666',
+      speedValTxtColor: 'blue'
+    });
+    document.getElementById('speedometer-1').innerHTML = '';
+    document.getElementById('speedometer-1').append(speedoMeter1.elm);
+  
+  }
+  
+</script>
+</html>    
