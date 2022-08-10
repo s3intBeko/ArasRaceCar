@@ -11,8 +11,8 @@ let prop = {
 }
 app.on('ready', function() {
     mainWindow = new BrowserWindow({ 
-        width: 1024,
-        height: 768,
+        width: 800 ,
+        height: 480,
         frame: prop.showFrame,
         show:prop.show,
         webPreferences:{
