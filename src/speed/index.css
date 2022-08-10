@@ -1,13 +1,18 @@
 body {
-	background-image:url('background.png');
+	background:url('background.png') no-repeat center center fixed;
 	position: relative;
 	background-color: black;
 	border-radius:50%;
+	/*background: url('images/yourimage.jpg') no-repeat center center fixed; */
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 .speedo {
 	margin-top: 30px;
 	border: 18px solid #c4ccff;
-    width: fit-content;
+    width: fit-content; 
     border-radius: 192px;
 }
 .batteryOver {
@@ -48,6 +53,7 @@ body {
 	left: 0.6em;
   }
   #charge-level {
+	color: #c3c3c3cf;
 	position: absolute;
 	font-size: 3em;
 	font-weight: 500;

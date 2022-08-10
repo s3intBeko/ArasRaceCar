@@ -1,7 +1,9 @@
-const { config } = require('dotenv');
-const { app, BrowserWindow } = require('electron');
-const { ipcMain , dialog } = require('electron')
+const { app, BrowserWindow ,ipcMain } = require('electron')
 const path = require('path')
+const config = require('./config')
+const os = require("os")
+const {currentLoad, manufacturer,  cpu } = require("systeminformation")
+
 let mainWindow
 let prop = {
     showFrame:true,
@@ -9,12 +11,12 @@ let prop = {
     webDev:false,
     maximize:false
 }
-app.on('ready', function() {
+app.on('ready', async function() {
     mainWindow = new BrowserWindow({ 
-        width: 800 ,
-        height: 480,
-        frame: prop.showFrame,
-        show:prop.show,
+        width: config.width ,
+        height: config.height,
+        frame: config.showFrame,
+        show:config.show,
         webPreferences:{
             nodeIntegration:true,
             contextIsolation: false,
@@ -26,7 +28,9 @@ app.on('ready', function() {
     mainWindow.loadFile(path.join(__dirname,'index.html'))
     if(prop.webDev)
         mainWindow.webContents.openDevTools()
-    mainWindow.show();
+    mainWindow.show()
+    const name = await cpu()
+    console.log(name)
 })
 
  
