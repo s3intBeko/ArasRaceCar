@@ -1,5 +1,4 @@
-const raspi = require('raspi')
-const I2C = require('raspi-i2c').I2C
+const i2c = require('i2c-bus');
 const ADDR = 0x18;
 const {Buffer} = require('node:buffer')
 const CMD = 0x10;
@@ -12,8 +11,14 @@ class Device {
         this.connected = false  
     }
     open(){
-        this.i2cDevice = new I2C()
-        this.connected = true
+        this.i2cDevice = i2c.open(1,function(err){
+            if(err){
+                console.log('error openinig bus',err)
+                this.connected = false
+            }else{
+                this.connected = true
+            }
+        })
     }
     start(){
         let that = this
@@ -22,10 +27,10 @@ class Device {
                 that.open()
                 return
             }
-            //const arr = new Uint16Array(32);
-            //const buffer = Buffer.from(arr)
+            const arr = new Uint16Array(32);
+            const buffer = Buffer.from(arr)
             try {
-               let buffer =  that.i2cDevice.readSync(ADDR, 2, 32)
+                that.i2cDevice.readI2cBlockSync(ADDR, 2, 32, buffer)
             } catch (error) {
                 that.connected = false
                 let readedObj = {
@@ -79,7 +84,7 @@ class Device {
         arr[2] = data.breakMin
         arr[3] = data.breakMax
         let buf = Buffer.from(arr.buffer)
-        this.i2cDevice.writeSync(ADDR,CMD,buf)        
+        this.i2cDevice.writeI2cBlockSync(ADDR,CMD,8,buf)        
     }
 
 }
