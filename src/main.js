@@ -80,7 +80,8 @@ function deviceCallback(obj) {
 ipcMain.on("settingSaveClicked",function (event, arg) {
     status ='idle'
     mainWindow.loadFile(path.join(__dirname,'disconnected.html'))
-   console.log(arg)
+    device.sendData(arg)
+    
 });
 ipcMain.on("settingCancelClicked",function (event, arg) {
     status ='idle'
