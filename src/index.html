@@ -5,15 +5,11 @@
         <title>My Application</title>
         <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="../src/speed/index.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="../src/speed/css/speedometer.css" rel="stylesheet" type="text/css" />
         
     </head>
     <body>
-        <b>Hello World</b>
-        <button class = "btn btn-success" id="settingsButton">Settings</button>
-        <div id="show"></div>
-        <input id="speedoMeterInputRange-1" type="range"  min="0" max="35" value="1" />
-        <span id="speedoMeterInputRange-value-1">10</span>
         <div class="d-flex justify-content-center">
             <div class="speedo">
                 <div>                  
@@ -22,12 +18,55 @@
               </div>
 
         </div>
+        <button class="btn" id="settingsButton" style="position: absolute;top: 10px;left: 10px;"><i class="fa fa-gear fa-lg"></i></button>
         <div class="batteryOver">
             <div id="battery">
                 <div id="charge"></div>
                 <div id="charge-level"></div>
               </div>
               <div id="charging-time"></div>
+        </div>
+        <div class="tempetureOver">
+            <div id="tempeture">
+              </div>              
+        </div>
+        <div class="containerAttendance-Gas">
+            <div class="attendance">
+                <p class="title">Gas</p>
+                <div class="attendance-bar" id="attendance-gas">
+                    <div class="attendance-level-gas"></div>
+                    <div class="attendance-cage-css">
+                        <div class="bar-1"></div>
+                        <div class="bar-2"></div>
+                        <div class="bar-3"></div>
+                        <div class="bar-4"></div>
+                        <div class="bar-5"></div>
+                        <div class="bar-6"></div>
+                        <div class="bar-7"></div>
+                        <div class="bar-8"></div>
+                        <div class="bar-9"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="containerAttendance-Break">
+            <div class="attendance">
+                <p class="title">Break</p>
+                <div class="attendance-bar" id="attendance-break">
+                    <div class="attendance-level"></div>
+                    <div class="attendance-cage-css">
+                        <div class="bar-1"></div>
+                        <div class="bar-2"></div>
+                        <div class="bar-3"></div>
+                        <div class="bar-4"></div>
+                        <div class="bar-5"></div>
+                        <div class="bar-6"></div>
+                        <div class="bar-7"></div>
+                        <div class="bar-8"></div>
+                        <div class="bar-9"></div>
+                    </div>
+                </div>
+            </div>
         </div>
         
         

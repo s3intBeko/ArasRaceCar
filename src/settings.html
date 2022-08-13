@@ -1,0 +1,33 @@
+<html>
+<head>
+</head>
+<body style="background-color: black;">
+    <div style="color:green">
+        <label for="rangeBreakMin" class="form-label">Break Min</label>
+        <input type="range" class="form-range" min="0" max="1020" step="1" id="rangeBreakMin" oninput="rangeBreakMinValue.innerText = this.value">
+        <span id="rangeBreakMinValue"></span>
+    </div>
+    
+    <div style="color:green">
+        <label for="rangeBreakMax" class="form-label">Break Max</label>
+        <input type="range" class="form-range" min="0" max="1020" step="1" id="rangeBreakMax" oninput="rangeBreakMaxValue.innerText = this.value">
+        <span id="rangeBreakMaxValue"></span>
+    </div>
+
+    <div style="color:green">
+        <label for="rangeGasMin" class="form-label">Gas Min</label>
+        <input type="range" class="form-range" min="0" max="1020" step="1" id="rangeGasMin" oninput="rangeGasMinValue.innerText = this.value">
+        <span id="rangeGasMinValue"></span>
+    </div>
+
+    <div style="color:green">
+        <label for="rangeGasMax" class="form-label">Gas Max</label>
+        <input type="range" class="form-range" min="0" max="1020" step="1" id="rangeGasMax" oninput="rangeGasMaxValue.innerText = this.value">
+        <span id="rangeGasMaxValue"></span>
+    </div>
+
+    <button id="cancelButton">Cancel</button>
+    <button id="saveButton">Save</button>
+    <script  src="settings.js"></script>
+</body>
+</html>    
